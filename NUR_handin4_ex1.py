@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Mon May 22 14:55:20 2023
 
-@author: Jelme
-"""
 # we need to import the time module from astropy
 from astropy.time import Time
 # import some coordinate things from astropy
@@ -14,17 +10,7 @@ from astropy import constants as c
 import matplotlib.pyplot as plt
 import numpy as np
 
-# def grav(loc, mass):
-#     dist = (np.sqrt(np.sum(loc**2))*u.AU)
-#     print(dist)
-#     cosa = loc[0]/dist.value
-#     cosb = loc[1]/dist.value
-#     cosc = loc[2]/dist.value
-#     F=(-c.G*c.M_sun/(dist.to(u.m))**2).to(u.AU/u.d**2).value
-#     a = np.array([cosa,cosb,cosc])*F
-#     print(a)
-#     return a
-# 
+
 def grav(r,const):
     #Calculates the gravitational acceleration using the location of the planet
     #in AU
@@ -113,7 +99,8 @@ handles, labels = axs[0].get_legend_handles_labels()
 fig.tight_layout()
 fig.subplots_adjust(top=0.8)
 fig.legend(handles, labels, loc='upper left', bbox_to_anchor=(0.05,0.95),ncols=int(len(names)/2+1))
-fig.show()
+fig.savefig('./plots/initials.pdf')
+plt.close()
 
 
 iterations = int(200*365.25*2)
@@ -133,4 +120,5 @@ fig.suptitle('Simulated orbits of the solar system')
 fig.tight_layout()
 handles, labels = axs[0].get_legend_handles_labels()
 fig.legend(handles, labels, loc='upper right')
-fig.show()
+fig.savefig('./plots/orbits.pdf')
+plt.close()

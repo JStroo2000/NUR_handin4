@@ -1,0 +1,26 @@
+\section{Exercise 1}
+In this section, solutions to Exercise 1 of this hand-in assignment will be shown. The code used to get these solutions is:
+\lstinputlisting{NUR_handin4_ex1.py}
+
+\subsection*{a)}
+The 'current time' used to generate the initial conditions for the planets is the same as in the example: 2021-12-7 at 10:00. The positions of the planets at this time are:
+\begin{figure}
+    \centering
+    \includegraphics{./plots/intials.pdf}
+    \caption{The initial positions of the solar system at the time given above. The left panel shows the x-y plane, the right panel shows the x-z plane.}
+    \label{fig:initial}
+\end{figure}
+\subsection*{b)}
+Using the leapfrog algorithm, the initial locations and velocities at the 'current' time, the planet's orbits can be simulated. For this, we need Newton's gravitational force law
+\begin{equation}
+    ma = -\frac{GmM}{r^2},
+\end{equation}
+where m is the planet's mass, M is the sun's mass, G is the gravitational constant, a is the planet's acceleration, and r is the distance between the sun and the planet. In addition, it is assumed the Sun is stationary, and the planets do not exert any force on each other. This simulation, over 200 years with steps of half a day, has the following result:
+\begin{figure}
+    \centering
+    \includegraphics{./plots/orbits.pdf}
+    \caption{The results of the solar system simulation. The top panel shows the x-y plane, while the bottom panel shows the development of z over time.}
+    \label{fig:orbits}
+\end{figure}
+It appears as if leapfrog is indeed a suitable choice of algorithm: most of the orbits appear stable enough, although they get less stable the closer to the sun the planets get. In particular, Mercury likes to escape its orbit, but the fact that relativistic effects are necessary to explain its orbit might cause part of that. 
+At any rate, the leapfrog algorithm is a suitable algorithm for orbital calculations because it conserves energy, which is an important part of orbital mechanics. Other similar algorithms do not do this, and would likely result in even less stable simulated orbits.

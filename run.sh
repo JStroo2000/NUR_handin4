@@ -10,7 +10,7 @@ fi
 
 #Script for exercise 1
 echo "Run the first script..."
-python3 NUR_handin4ex1.py
+python3 NUR_handin4_ex1.py
 
 echo "Generating the pdf"
 
